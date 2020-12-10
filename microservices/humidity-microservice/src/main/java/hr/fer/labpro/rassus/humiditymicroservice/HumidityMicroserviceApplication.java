@@ -1,6 +1,7 @@
 package hr.fer.labpro.rassus.humiditymicroservice;
 
 
+import com.netflix.discovery.DiscoveryClient;
 import hr.fer.labpro.rassus.humiditymicroservice.entity.HumidityReading;
 import hr.fer.labpro.rassus.humiditymicroservice.repository.HumidityRepository;
 import hr.fer.labpro.rassus.humiditymicroservice.util.Parser;
@@ -22,7 +23,10 @@ public class HumidityMicroserviceApplication implements CommandLineRunner {
 
 	@Autowired
 	private HumidityRepository repository;
-
+/*
+	@Autowired
+	private DiscoveryClient discoveryClient;
+*/
 	public static void main(String[] args) {
 		SpringApplication.run(HumidityMicroserviceApplication.class, args);
 	}
