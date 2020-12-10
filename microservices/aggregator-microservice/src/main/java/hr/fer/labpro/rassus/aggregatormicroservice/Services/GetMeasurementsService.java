@@ -7,7 +7,4 @@ import org.springframework.stereotype.Service;
 public class GetMeasurementsService {
     public GetMeasurementsService() {
     }
-    public Measurement getCurrentMeasurements(){
-        return null;
-    }
 }
