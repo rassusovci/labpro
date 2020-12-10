@@ -25,6 +25,14 @@ public class Measurement {
         this.humidity = humidity;
     }
 
+    @Override
+    public String toString() {
+        return "Measurement{" +
+                "temperature='" + temperature + '\'' +
+                ", humidity='" + humidity + '\'' +
+                '}';
+    }
+
     public Measurement(String temperature, String humidity) {
         this.temperature = temperature;
         this.humidity = humidity;
