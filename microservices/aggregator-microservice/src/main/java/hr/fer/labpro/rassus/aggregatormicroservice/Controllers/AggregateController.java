@@ -28,8 +28,8 @@ public class AggregateController {
         //tu ces zvat neki service vjv
         try {
             //Kasnije treba maknut ove hardkodirane URLove
-            ResponseEntity<String> temperature = restTemplate.getForEntity(new URI("http://localhost:8083/current-reading"),String.class);
-            ResponseEntity<String> humidity = restTemplate.getForEntity(new URI("http://localhost:8082/current-reading"),String.class);
+            ResponseEntity<String> temperature = restTemplate.getForEntity(new URI("http://temperature-ms/current-reading"),String.class);
+            ResponseEntity<String> humidity = restTemplate.getForEntity(new URI("http://humidity-ms/current-reading"),String.class);
             if(temperature.getStatusCode() != HttpStatus.OK || humidity.getStatusCode() != HttpStatus.OK){
                 System.out.println("Dogodila se greska " + humidity.getStatusCode() + " " + temperature.getStatusCode());
             }
