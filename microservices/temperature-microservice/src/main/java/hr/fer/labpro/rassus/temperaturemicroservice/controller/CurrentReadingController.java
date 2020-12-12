@@ -28,9 +28,4 @@ public class CurrentReadingController {
                 :
                 ResponseEntity.status(500).body("Reading temperature error");
     }
-
-    @GetMapping("/pozdrav")
-    public void pozdrav() {
-        System.out.println(this.temperatureUnit);
-    }
 }
