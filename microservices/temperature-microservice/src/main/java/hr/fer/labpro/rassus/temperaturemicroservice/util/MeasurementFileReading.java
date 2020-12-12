@@ -24,7 +24,7 @@ public class MeasurementFileReading {
                 Matcher matcher = pattern.matcher(line);
                 if(matcher.find()) {
                     temperaturesList.add(!matcher.group(1).equals("") ?
-                            new TemperatureReading(Integer.parseInt(matcher.group(1)))
+                            new TemperatureReading(Double.parseDouble(matcher.group(1)))
                             :
                             null);
                 }
