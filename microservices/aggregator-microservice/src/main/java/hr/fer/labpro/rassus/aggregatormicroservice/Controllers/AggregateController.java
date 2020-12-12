@@ -1,9 +1,12 @@
 package hr.fer.labpro.rassus.aggregatormicroservice.Controllers;
 
 import hr.fer.labpro.rassus.aggregatormicroservice.Models.Measurement;
+import hr.fer.labpro.rassus.aggregatormicroservice.Models.Pomoc;
 import hr.fer.labpro.rassus.aggregatormicroservice.Services.GetMeasurementsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +18,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @RestController
+@RefreshScope
 @RequestMapping
 public class AggregateController {
     @Autowired
@@ -22,6 +26,11 @@ public class AggregateController {
 
     @Autowired
     RestTemplate restTemplate;
+    @Autowired
+    Pomoc pom;
+
+    @Value("${spring.datasource.pozdrav2: defaultni pozdrav:(}")
+    private String pozdrav;
 
     @GetMapping("/readings")
     public Measurement getCurrentValues(){
@@ -40,5 +49,9 @@ public class AggregateController {
             e.printStackTrace();
         }
         return null;
+    }
+    @GetMapping("/pozdrav")
+    public String pozdrav() {
+        return pozdrav;
     }
 }
