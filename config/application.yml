@@ -5,6 +5,8 @@ proljece:
         pozdrav2: mali_pozdrav2
         url: jdbc:h2:dev
         username: SA
-hum.name: humidity-ms2
-temp.name: temperature-ms2
-agg.name: aggregator-ms2
+data:
+    temperature-unit: C
+    temperature-microservice: temperature-ms2
+    humidity-microservice: humidity-ms2
+    aggregator-microservice: aggregator-ms2
