@@ -2,9 +2,7 @@ package hr.fer.labpro.rassus.temperaturemicroservice.util;
 
 import hr.fer.labpro.rassus.temperaturemicroservice.constant.Constants;
 import hr.fer.labpro.rassus.temperaturemicroservice.model.TemperatureReading;
-
 import java.io.*;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

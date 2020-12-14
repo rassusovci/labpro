@@ -11,13 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class CurrentReadingController {
     CurrentReadingService currentReadingService;
 
-    @Value("${temperature.unit: C}")
+    @Value("${data.temperature-unit: C}")
     private String temperatureUnit;
 
     @Autowired
     public CurrentReadingController(CurrentReadingService currentReadingService) {
         this.currentReadingService = currentReadingService;
     }
+
+    @Value("${data.temperature-microservice}")
+    private String temperature;
 
     @GetMapping(value="/current-reading")
     public ResponseEntity<String> getCurrentReading() {
@@ -27,5 +30,9 @@ public class CurrentReadingController {
                 ResponseEntity.ok(currentTemperatureReading.toString())
                 :
                 ResponseEntity.status(500).body("Reading temperature error");
+    }
+    @GetMapping("/pozdrav2")
+    public String pozdrav2() {
+        return "a ovo je temp: "+this.temperature;
     }
 }

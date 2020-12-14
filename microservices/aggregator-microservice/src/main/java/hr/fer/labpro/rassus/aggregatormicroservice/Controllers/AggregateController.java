@@ -29,16 +29,25 @@ public class AggregateController {
     @Autowired
     Pomoc pom;
 
-    @Value("${spring.datasource.pozdrav2: defaultni pozdrav:(}")
+    @Value("${proljece.datasource.pozdrav2: defaultni pozdrav:(}")
     private String pozdrav;
+
+    @Value("${data.humidity-microservice}")
+    private String humidity;
+
+    @Value("${data.temperature-microservice}")
+    private String temperature;
+
+    @Value("${data.temperature-unit}")
+    private String temperatureUnit;
 
     @GetMapping("/readings")
     public Measurement getCurrentValues(){
         //tu ces zvat neki service vjv
         try {
             //Kasnije treba maknut ove hardkodirane URLove
-            ResponseEntity<String> temperature = restTemplate.getForEntity(new URI("http://temperature-ms/current-reading"),String.class);
-            ResponseEntity<String> humidity = restTemplate.getForEntity(new URI("http://humidity-ms/current-reading"),String.class);
+            ResponseEntity<String> temperature = restTemplate.getForEntity(new URI("http://"+this.temperature.trim()+"/current-reading"),String.class);
+            ResponseEntity<String> humidity = restTemplate.getForEntity(new URI("http://"+this.humidity.trim()+"/current-reading"),String.class);
             if(temperature.getStatusCode() != HttpStatus.OK || humidity.getStatusCode() != HttpStatus.OK){
                 System.out.println("Dogodila se greska " + humidity.getStatusCode() + " " + temperature.getStatusCode());
             }
@@ -53,5 +62,9 @@ public class AggregateController {
     @GetMapping("/pozdrav")
     public String pozdrav() {
         return pozdrav;
+    }
+    @GetMapping("/pozdrav2")
+    public String pozdrav2() {
+        return "ovo je hum: "+this.humidity+", a ovo je temp: "+this.temperature+" i ovo je unit: "+this.temperatureUnit;
     }
 }
