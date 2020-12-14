@@ -13,7 +13,7 @@ public class CurrentReadingServiceImpl implements CurrentReadingService {
     private TemperatureRepository repo;
 
     @Override
-    public Integer getCurrentTemperatureReading() {
+    public Double getCurrentTemperatureReading() {
         Integer id = getReadingId();
         TemperatureReading temperatureReading = this.repo.getOne(id);
         return temperatureReading.getTemperature();

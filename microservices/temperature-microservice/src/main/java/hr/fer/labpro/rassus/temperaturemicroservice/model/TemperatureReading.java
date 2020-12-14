@@ -7,19 +7,19 @@ import javax.persistence.Id;
 public class TemperatureReading {
     @Id
     private Integer id;
-    private Integer temperature;
+    private Double temperature;
 
-    public TemperatureReading(Integer temperature) {
+    public TemperatureReading(Double temperature) {
         this.temperature = temperature;
     }
 
     public TemperatureReading() {}
 
-    public Integer getTemperature() {
+    public Double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Integer temperature) {
+    public void setTemperature(Double temperature) {
         this.temperature = temperature;
     }
 

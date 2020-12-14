@@ -23,6 +23,10 @@ public class TemperatureMicroserviceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		this.readAndStoreTemperatures();
+	}
+
+	private void readAndStoreTemperatures() {
 		// initial read temperatures on run and put them in H2
 		List<TemperatureReading> temperaturesList = new MeasurementFileReading().initialReadTemperaturesFromFile();
 		int index = 0;
