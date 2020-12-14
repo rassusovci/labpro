@@ -2,9 +2,7 @@ package hr.fer.labpro.rassus.temperaturemicroservice.util;
 
 import hr.fer.labpro.rassus.temperaturemicroservice.constant.Constants;
 import hr.fer.labpro.rassus.temperaturemicroservice.model.TemperatureReading;
-
 import java.io.*;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -24,7 +22,7 @@ public class MeasurementFileReading {
                 Matcher matcher = pattern.matcher(line);
                 if(matcher.find()) {
                     temperaturesList.add(!matcher.group(1).equals("") ?
-                            new TemperatureReading(Integer.parseInt(matcher.group(1)))
+                            new TemperatureReading(Double.parseDouble(matcher.group(1)))
                             :
                             null);
                 }
