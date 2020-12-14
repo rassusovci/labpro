@@ -1,7 +1,12 @@
-spring:
+proljece:
     datasource:
         password: password
-        pozdrav1: veliki_pozdrav
-        pozdrav2: mali_pozdrav
+        pozdrav1: veliki_pozdrav2
+        pozdrav2: mali_pozdrav2
         url: jdbc:h2:dev
         username: SA
+data:
+    temperature-unit: C
+    temperature-microservice: temperature-ms2
+    humidity-microservice: humidity-ms2
+    aggregator-microservice: aggregator-ms2
