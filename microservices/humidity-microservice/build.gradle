@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.0'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'com.google.cloud.tools.jib' version '1.8.0'
 }
 
 group = 'hr.fer.labpro.rassus'
@@ -22,6 +23,24 @@ repositories {
 ext {
 	set('springCloudVersion', "2020.0.0-M6")
 }
+
+jib {
+	from {
+		image = 'openjdk:11.0.9-jre-slim'
+	}
+
+	to {
+		image = 'humidity-jib'
+	}
+
+	container {
+		appRoot = '/opt'
+		ports = ['8082']
+		jvmFlags = ['-Djava.security.edg=file:/dev/./urandom']
+	}
+}
+
+assemble.dependsOn jibDockerBuild
 
 dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
