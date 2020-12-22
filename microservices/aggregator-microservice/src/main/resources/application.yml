@@ -6,7 +6,9 @@ spring.application.name: ${data.aggregator-microservice}
 configpath: config
 management.endpoints.web.exposure.include: "*"
 spring.cloud.config.enabled: true
-spring.config.import: configserver:http://localhost:8888
+spring.config.discovery.enabled: true
+spring.config.discovery.service-id: configServer
+spring.config.import: configserver:http://config:8888
 data:
   temperature-unit: C
   temperature-microservice: temperature-ms

@@ -29,7 +29,7 @@ public class AggregateController {
     @Autowired
     Pomoc pom;
 
-    @Value("${proljece.datasource.pozdrav2: defaultni pozdrav:(}")
+    @Value("${proljece.datasource.pozdrav2: default}")
     private String pozdrav;
 
     @Value("${data.humidity-microservice}")
@@ -43,15 +43,24 @@ public class AggregateController {
 
     @GetMapping("/readings")
     public Measurement getCurrentValues(){
-        //tu ces zvat neki service vjv
+
         try {
-            //Kasnije treba maknut ove hardkodirane URLove
             ResponseEntity<String> temperature = restTemplate.getForEntity(new URI("http://"+this.temperature.trim()+"/current-reading"),String.class);
             ResponseEntity<String> humidity = restTemplate.getForEntity(new URI("http://"+this.humidity.trim()+"/current-reading"),String.class);
             if(temperature.getStatusCode() != HttpStatus.OK || humidity.getStatusCode() != HttpStatus.OK){
                 System.out.println("Dogodila se greska " + humidity.getStatusCode() + " " + temperature.getStatusCode());
             }
-            Measurement m = new Measurement(temperature.getBody(),humidity.getBody());
+
+            String temp = temperature.getBody();
+            String hum = humidity.getBody() + " %";
+
+            if(temperatureUnit.trim().toLowerCase().equals("k")) {
+                Integer tempInt = Integer.parseInt(temp) + 273;
+                temp = tempInt.toString() + " K";
+            } else {
+                temp += " C";
+            }
+            Measurement m = new Measurement(temp,hum);
             System.out.println("DOBIO SAM " + m);
             return m;
         } catch (URISyntaxException e) {
