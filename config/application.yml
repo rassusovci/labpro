@@ -6,7 +6,7 @@ proljece:
         url: jdbc:h2:dev
         username: SA
 data:
-    temperature-unit: CKKK
+    temperature-unit: K
     temperature-microservice: temperature-ms3
     humidity-microservice: humidity-ms3
     aggregator-microservice: aggregator-ms3
