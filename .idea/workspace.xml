@@ -20,10 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4757d59-ba94-481d-aa95-d8116ab1a4c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/microservices/temperature-microservice/src/main/java/hr/fer/labpro/rassus/temperaturemicroservice/model/Temperature.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/temperature-microservice/src/main/java/hr/fer/labpro/rassus/temperaturemicroservice/util/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/temperature-microservice/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/temperature-microservice/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,19 +45,6 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/microservices/temperature-microservice" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="TaskManager">
     <servers />
   </component>
@@ -74,6 +58,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="527" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607442947329">
