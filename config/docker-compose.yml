@@ -1,3 +1,4 @@
+version: '3.7'
 services:
   config:
     image: config-server-jib
@@ -9,25 +10,25 @@ services:
       - "8761:8761"
     depends_on:
       - "config"
-    command: ["./wait-for-it.sh", "config:8888"]
+    command: ["wait-for-it.sh", "config:8888", "--", "putanja/do/eurekaSpringAplikacije"]
   humidity:
     image: humidity-jib
     ports:
       - "8082:8082"
     depends_on:
       - "eureka"
-    command: ["./wait-for-it.sh", "eureka:8761"]
+    command: ["wait-for-it.sh", "eureka:8761", "--strict"]
   temperature:
     image: temperature-jib
     ports:
       - "8083:8083"
     depends_on:
-      - "humidity"
-    command: ["./wait-for-it.sh", "humidity:8082"]
+      - "eureka"
+    command: ["wait-for-it.sh", "eureka:8761", "--strict"]
   aggregator:
     image: aggregator-jib
     ports:
       - "8081:8081"
     depends_on:
-      - "temperature"
-    command: [ "./wait-for-it.sh", "temperature:8083"]
+      - "eureka"
+    command: [ "wait-for-it.sh", "eureka:8761", "--strict"]

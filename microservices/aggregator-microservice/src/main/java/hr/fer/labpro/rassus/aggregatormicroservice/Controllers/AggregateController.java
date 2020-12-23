@@ -55,7 +55,7 @@ public class AggregateController {
             String hum = humidity.getBody() + " %";
 
             if(temperatureUnit.trim().toLowerCase().equals("k")) {
-                Integer tempInt = Integer.parseInt(temp) + 273;
+                Double tempInt = Double.parseDouble(temp) + 273;
                 temp = tempInt.toString() + " K";
             } else {
                 temp += " C";
