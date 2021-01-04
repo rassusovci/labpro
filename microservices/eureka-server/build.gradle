@@ -34,10 +34,14 @@ jib {
 	}
 
 	container {
-		appRoot = '/opt'
-		ports = ['8761']
-		jvmFlags = ['-Djava.security.edg=file:/dev/./urandom']
+		entrypoint = ['']
 	}
+
+	extraDirectories.paths = ['src/main/jib']
+	extraDirectories.permissions = [
+        '/wait-for-it.sh': '755',  // Read/write/execute for owner, read/execute for group/other
+        '/radili.sh': '755' 
+    ]
 }
 
 assemble.dependsOn jibDockerBuild

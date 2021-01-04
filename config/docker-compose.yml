@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 services:
   config:
     image: config-server-jib
@@ -10,25 +10,25 @@ services:
       - "8761:8761"
     depends_on:
       - "config"
-    command: ["wait-for-it.sh", "config:8888", "--", "putanja/do/eurekaSpringAplikacije"]
+    command: ["./wait-for-it.sh", "config:8888", "--", "java", "-cp", "/app/resources:/app/classes:/app/libs/*", "hr/fer/labpro/rassus/eurekaserver/EurekaServerApplication"]
   humidity:
     image: humidity-jib
     ports:
       - "8082:8082"
     depends_on:
       - "eureka"
-    command: ["wait-for-it.sh", "eureka:8761", "--strict"]
+    command: ["./wait-for-it.sh", "eureka:8761", "--", "java", "-cp", "/app/resources:/app/classes:/app/libs/*", "hr/fer/labpro/rassus/humiditymicroservice/HumidityMicroserviceApplication"]
   temperature:
     image: temperature-jib
     ports:
       - "8083:8083"
     depends_on:
       - "eureka"
-    command: ["wait-for-it.sh", "eureka:8761", "--strict"]
+    command: ["./wait-for-it.sh", "eureka:8761", "--", "java", "-cp", "/app/resources:/app/classes:/app/libs/*", "hr/fer/labpro/rassus/temperaturemicroservice/TemperatureMicroserviceApplication"]
   aggregator:
     image: aggregator-jib
     ports:
       - "8081:8081"
     depends_on:
       - "eureka"
-    command: [ "wait-for-it.sh", "eureka:8761", "--strict"]
+    command: ["./wait-for-it.sh", "eureka:8761", "--", "java", "-cp", "/app/resources:/app/classes:/app/libs/*", "hr/fer/labpro/rassus/aggregatormicroservice/AggregatorMicroserviceApplication"]
